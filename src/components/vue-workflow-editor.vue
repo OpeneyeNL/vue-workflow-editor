@@ -118,6 +118,40 @@
           return val > 0
         }
       },
+      connectionPoints: [
+        {
+          direction: 'u',
+          percentage: 20
+        },
+        {
+          direction: 'u',
+          percentage: 50
+        },
+        {
+          direction: 'u',
+          percentage: 80
+        },
+        {
+          direction: 'r',
+          percentage: 50
+        },
+        {
+          direction: 'd',
+          percentage: 80
+        },
+        {
+          direction: 'd',
+          percentage: 50
+        },
+        {
+          direction: 'd',
+          percentage: 20
+        },
+        {
+          direction: 'l',
+          percentage: 50
+        }
+      ],
       draggable: {
         type: Boolean, default: true
       },
@@ -316,14 +350,26 @@
         this.elmY += diffY
 
         // don't exceed limits
-        if (this.elmX < 0) { this.elmX = 0 }
-        if (this.elmY < 0) { this.elmY = 0 }
-        if (this.elmX > this.width) { this.elmX = this.width }
-        if (this.elmY > this.height) { this.elmY = this.height }
+        if (this.elmX < 0) {
+          this.elmX = 0
+        }
+        if (this.elmY < 0) {
+          this.elmY = 0
+        }
+        if (this.elmX > this.width) {
+          this.elmX = this.width
+        }
+        if (this.elmY > this.height) {
+          this.elmY = this.height
+        }
 
         if (this.dragging) {
-          if (this.elmX > this.width - this.nodeWidth) { this.elmX = this.width - this.nodeWidth }
-          if (this.elmY > this.height - this.nodeHeight) { this.elmY = this.height - this.nodeHeight }
+          if (this.elmX > this.width - this.nodeWidth) {
+            this.elmX = this.width - this.nodeWidth
+          }
+          if (this.elmY > this.height - this.nodeHeight) {
+            this.elmY = this.height - this.nodeHeight
+          }
           this.activeNode.node.x = (Math.round(this.elmX / this.grid[0]) * this.grid[0])
           this.activeNode.node.y = (Math.round(this.elmY / this.grid[1]) * this.grid[1])
         } else if (this.draggingStartPoint) {
